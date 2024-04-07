@@ -55,10 +55,7 @@ $(document).ready(function () {
   });
 
   /**
-   * Task 3:
-   * Request http://0.0.0.0:5001/api/v1/status/:
-   * - If in the status is “OK”, add the class available to the DIV#api_status
-   * - Otherwise, remove the class available to the DIV#api_status
+   * how to handle api status
    **/
   const apiStatus = $('DIV#api_status');
   $.ajax('http://0.0.0.0:5001/api/v1/status/').done(function (data) {
@@ -70,22 +67,22 @@ $(document).ready(function () {
   });
 
   function search (theAmenities, theStates, theCities) {
-    const datas = {};
+    const items = {};
     if (theAmenities != null) {
-      datas.amenities = theAmenities;
+      items.amenities = theAmenities;
     }
     if (theStates != null) {
-      datas.states = theStates;
+      items.states = theStates;
     }
     if (theCities != null) {
-      datas.cities = theCities;
+      items.cities = theCities;
     }
     const placesSearch = $.ajax({
       url: 'http://0.0.0.0:5001/api/v1/places_search/',
       dataType: 'json',
       contentType: 'application/json',
       method: 'POST',
-      data: JSON.stringify(datas)
+      data: JSON.stringify(items)
     });
     placesSearch.done(function (data) {
       for (let i = 0; i < data.length; i++) {
