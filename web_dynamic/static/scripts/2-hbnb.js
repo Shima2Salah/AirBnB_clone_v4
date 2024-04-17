@@ -15,7 +15,7 @@ $(document).ready(function () {
         }
       })
     })
-    $.get("http://localhost:5001/api/v1/status/").done(function(data) {
+    $.get("http://100.26.246.108:5001/api/v1/status/").done(function(data) {
       $('div#api_status').addClass('available');
     }).fail(function(data) {
       $('div#api_status').removeClass('available');
